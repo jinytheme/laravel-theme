@@ -38,7 +38,8 @@ class JinyThemeServiceProvider extends ServiceProvider
                 foreach($setting['active'] as $item) {
                     $path = base_path($setting['path'].DIRECTORY_SEPARATOR.$item);
                     if(is_dir($path)) {
-                        $componentNames = $this->scanComponents($path, ['app','layout','sidebar','main','footer','header']);
+                        $except = ['app','layout','sidebar','main','footer','header'];
+                        $componentNames = $this->scanComponents($path, $except);
                     }
                 }
             }
